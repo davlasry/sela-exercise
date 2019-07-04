@@ -1,0 +1,4 @@
+<h2>Jokes List</h2>
+<button (click)="getNewJokes(5, '[nerdy]')">Refresh</button>
+
+<app-joke *ngFor="let joke of jokes" [joke]="joke"></app-joke>
