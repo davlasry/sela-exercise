@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JokesService } from './services/jokes.service';
+import { Joke } from './models/jokes.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +9,12 @@ import { JokesService } from './services/jokes.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  categories: any;
+  categories: Observable<string[]>;
   activeCategory: string;
-  jokes: any[];
+  jokes: Joke[];
   limit: string;
 
   constructor(private jokesService: JokesService) {
-    this.categories = [];
     this.activeCategory = 'all';
     this.limit = '10';
   }
@@ -23,11 +24,11 @@ export class AppComponent implements OnInit {
     this.getNewJokes('all');
   }
 
-  onClickRefresh() {
+  onClickRefresh(): void {
     this.getNewJokes(this.activeCategory);
   }
 
-  onLimitChange() {
+  onLimitChange(): void {
     this.getNewJokes(this.activeCategory);
   }
 

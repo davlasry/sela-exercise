@@ -7,15 +7,6 @@
 .container {
   overflow: hidden;
 
-  .list-header {
-    padding: 20px 40px;
-    background: #969696;
-
-    .refresh-btn {
-      margin-left: 30px;
-    }
-  }
-
   .jokes-container {
     overflow: auto;
     flex: 1;

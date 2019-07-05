@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { JokesService } from 'src/app/services/jokes.service';
-import { Observable } from 'rxjs';
+import { Joke } from 'src/app/models/jokes.model';
 
 @Component({
   selector: 'app-jokes-list',
@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./jokes-list.component.scss']
 })
 export class JokesListComponent implements OnInit {
-  @Input() jokes: any;
+  @Input() jokes: Joke[];
 
-  constructor(private jokesService: JokesService) {}
+  constructor() {}
 
   ngOnInit() {}
 }

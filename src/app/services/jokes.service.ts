@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Joke } from '../models/jokes.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class JokesService {
     return this.http.get<any>(getJokesURL).pipe(map(result => result.value));
   }
 
-  public getJokesCategories(): Observable<any[]> {
+  public getJokesCategories(): Observable<string[]> {
     return this.http
       .get<any>(`${this.API_URL}/categories`)
       .pipe(map(result => result.value));
