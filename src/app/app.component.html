@@ -1,8 +1,39 @@
 <div class="app-container">
-  <mat-toolbar>My App</mat-toolbar>
+  <mat-toolbar>
+    <ul fxLayout="row">
+      <li
+        [ngClass]="{ active: activeCategory == 'all' }"
+        (click)="getNewJokes('all')"
+      >
+        All Categories
+      </li>
+      <li
+        *ngFor="let category of categories | async"
+        [ngClass]="{ active: activeCategory == category }"
+        (click)="getNewJokes(category)"
+      >
+        {{ category }}
+      </li>
+    </ul>
+    <div fxFlex></div>
+    <span class="select-label">Limit: </span>
+    <mat-form-field>
+      <mat-select (selectionChange)="onLimitChange($event)" [(value)]="limit">
+        <mat-option value="10">10</mat-option>
+        <mat-option value="25">25</mat-option>
+        <mat-option value="50">50</mat-option>
+        <mat-option value="100">100</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button
+      class="refresh-btn"
+      mat-mini-fab
+      color="primary"
+      (click)="onClickRefresh()"
+    >
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </mat-toolbar>
 
+  <app-jokes-list [jokes]="jokes"></app-jokes-list>
 </div>
-
-<!-- <router-outlet></router-outlet> -->
-
-<app-jokes-list></app-jokes-list>

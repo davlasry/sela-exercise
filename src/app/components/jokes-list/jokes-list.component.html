@@ -1,4 +1,10 @@
-<h2>Jokes List</h2>
-<button (click)="getNewJokes(5, '[nerdy]')">Refresh</button>
-
-<app-joke *ngFor="let joke of jokes" [joke]="joke"></app-joke>
+<div class="container" fxLayout="column">
+  <!-- <div fxLayout="row" fxLayoutAlign="start center" class="list-header">
+    <h2>Jokes List</h2>
+  </div> -->
+  <div class="jokes-container">
+    <div class="jokes">
+      <app-joke *ngFor="let joke of jokes" [joke]="joke"></app-joke>
+    </div>
+  </div>
+</div>
